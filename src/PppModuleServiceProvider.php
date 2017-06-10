@@ -1,17 +1,18 @@
 <?php namespace Qooco\PppModule;
 
-use Anomaly\PagesModule\Page\Form\PageEntryFormBuilder;
+use Anomaly\PagesModule\Page\Form\PageEntryFormSections;
 use Anomaly\PagesModule\Page\Form\PageFormBuilder;
 use Anomaly\PagesModule\Page\PageModel;
 use Anomaly\PagesModule\Page\Tree\PageTreeBuilder;
 use Anomaly\PostsModule\Page\PageObserver;
-use Anomaly\PostsModule\Post\Form\PostEntryFormBuilder;
+use Anomaly\PostsModule\Post\Form\PostEntryFormSections;
 use Anomaly\PostsModule\Post\Form\PostFormBuilder;
 use Anomaly\PostsModule\Post\PostBreadcrumb;
 use Anomaly\PostsModule\Post\PostModel;
 use Anomaly\PostsModule\Post\PostObserver;
 use Anomaly\PostsModule\Post\PostResolver;
 use Anomaly\PostsModule\Post\Table\PostTableBuilder;
+use Anomaly\PostsModule\Post\Table\PostTableFilters;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 
 class PppModuleServiceProvider extends AddonServiceProvider
@@ -39,17 +40,18 @@ class PppModuleServiceProvider extends AddonServiceProvider
      * @var array
      */
     protected $bindings = [
-        PostModel::class            => \Qooco\PppModule\Post\PostModel::class,
-        PostObserver::class         => \Qooco\PppModule\Post\PostObserver::class,
-        PostResolver::class         => \Qooco\PppModule\Post\PostResolver::class,
-        PostBreadcrumb::class       => \Qooco\PppModule\Post\PostBreadcrumb::class,
-        PostTableBuilder::class     => \Qooco\PppModule\Post\Table\PostTableBuilder::class,
-        PostFormBuilder::class      => \Qooco\PppModule\Post\Form\PostFormBuilder::class,
-        PostEntryFormBuilder::class => \Qooco\PppModule\Post\Form\PostEntryFormBuilder::class,
-        PageModel::class            => \Qooco\PppModule\Page\PageModel::class,
-        PageObserver::class         => \Qooco\PppModule\Page\PageObserver::class,
-        PageTreeBuilder::class      => \Qooco\PppModule\Page\Tree\PageTreeBuilder::class,
-        PageFormBuilder::class      => \Qooco\PppModule\Page\Form\PageFormBuilder::class,
-        PageEntryFormBuilder::class => \Qooco\PppModule\Page\Form\PageEntryFormBuilder::class,
+        PostModel::class             => \Qooco\PppModule\Post\PostModel::class,
+        PostObserver::class          => \Qooco\PppModule\Post\PostObserver::class,
+        PostResolver::class          => \Qooco\PppModule\Post\PostResolver::class,
+        PostBreadcrumb::class        => \Qooco\PppModule\Post\PostBreadcrumb::class,
+        PostTableBuilder::class      => \Qooco\PppModule\Post\Table\PostTableBuilder::class,
+        PostTableFilters::class      => \Qooco\PppModule\Post\Table\PostTableFilters::class,
+        PostFormBuilder::class       => \Qooco\PppModule\Post\Form\PostFormBuilder::class,
+        PostEntryFormSections::class => \Qooco\PppModule\Post\Form\PostEntryFormSections::class,
+        PageModel::class             => \Qooco\PppModule\Page\PageModel::class,
+        PageObserver::class          => \Qooco\PppModule\Page\PageObserver::class,
+        PageTreeBuilder::class       => \Qooco\PppModule\Page\Tree\PageTreeBuilder::class,
+        PageFormBuilder::class       => \Qooco\PppModule\Page\Form\PageFormBuilder::class,
+        PageEntryFormSections::class => \Qooco\PppModule\Page\Form\PageEntryFormSections::class,
     ];
 }

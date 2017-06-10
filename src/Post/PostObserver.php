@@ -20,6 +20,8 @@ class PostObserver extends \Anomaly\PostsModule\Post\PostObserver
      */
     public function saved(EntryInterface $entry)
     {
+        parent::saved($entry);
+
         $entry->load('parent');
 
         $path = $entry->parent

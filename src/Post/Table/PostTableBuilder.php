@@ -2,57 +2,23 @@
 
 use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\SelectFieldType\SelectFieldType;
+use Qooco\PppModule\Post\Table\Command\ModifyTableFilters;
+use Qooco\PppModule\Post\Table\Command\ModifyTableColumns;
 
 class PostTableBuilder extends \Anomaly\PostsModule\Post\Table\PostTableBuilder
 {
 
     /**
-     * @param PostTableBuilder $builder
+     * @param PageRepositoryInterface $pages
      */
-    public function onReady()
+    public function onReady(PageRepositoryInterface $pages)
     {
-        $parent_id = request('filter_parent');
+        $this->dispatch(new ModifyTableFilters($this));
+        $this->dispatch(new ModifyTableColumns($this));
 
-        $filters = $this->getFilters();
-        $columns = $this->getColumns();
-
-        if ($idx = array_search('category', $filters))
+        if ($parent_id = $this->getRequestValue('filter_parent'))
         {
-            unset($filters[$idx]);
-
-            $filters['parent'] = [
-                'filter'  => 'select',
-                'options' => function (
-                    SelectFieldType $fieldType,
-                    PageRepositoryInterface $repository
-                )
-                {
-                    $fieldType->setOptions(
-                        $repository->newQuery()->whereHas('posts')->get()
-                            ->pluck('path', 'id')->sort()->all()
-                    );
-                },
-            ];
-        }
-
-        if ($idx = array_search('category', $columns))
-        {
-            if ($parent_id)
-            {
-                unset($columns[$idx]);
-            }
-            else
-            {
-                $columns[$idx] = 'path';
-            }
-        }
-
-        $this->setFilters($filters);
-        $this->setColumns($columns);
-
-        if ($parent_id)
-        {
-            $page = app(PageRepositoryInterface::class)->find($parent_id);
+            $page = $pages->find($parent_id);
 
             //$this->setOption('title', $page->title.' '.$page->path);
             $title[] = $page->getTitle();

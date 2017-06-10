@@ -8,14 +8,13 @@ class PostFormBuilder extends \Anomaly\PostsModule\Post\Form\PostFormBuilder
     /**
      * @param PostFormBuilder $this
      */
-    public function onBuilt()
+    public function onBuilt(PageRepositoryInterface $pages)
     {
-        if ($page_id = request('parent'))
+        if ($page_id = $this->getRequestValue('parent'))
         {
-            $this->getForm()->getField('parent')->setValue($page_id);
-            $parent = app(PageRepositoryInterface::class)->find($page_id);
+            $this->getFormField('parent')->setValue($page_id);
 
-            if (!$parent)
+            if (!$parent = $pages->find($page_id))
             {
                 abort(404, 'Can\'t create post for non existing page!');
             }
@@ -27,14 +26,10 @@ class PostFormBuilder extends \Anomaly\PostsModule\Post\Form\PostFormBuilder
 
         $path = ($parent ? url(trim('/' . $parent->path, '/')) : url('/')) . '/';
 
-        /**
-         * @var SlugFieldType
-         */
-        $this->getForm()->getField('slug')->configSet('prefix', $path);
+        /* @var SlugFieldType */
+        $this->getFormField('slug')->configSet('prefix', $path);
 
-        /**
-         * @var RelationshipFieldType
-         */
-        $this->getForm()->getField('parent')->configSet('mode', 'lookup');
+        /* @var RelationshipFieldType */
+        $this->getFormField('parent')->configSet('mode', 'lookup');
     }
 }
