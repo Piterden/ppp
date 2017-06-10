@@ -1,0 +1,20 @@
+{
+    "name": "qooco/ppp-module",
+    "type": "streams-addon",
+    "description": "A special module linking Pages and Posts modules.",
+    "autoload": {
+        "psr-4": {
+            "Qooco\\PppModule\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Qooco",
+            "email": "qooco.a@gmail.com",
+            "role": "Owner"
+        }
+    ],
+    "support": {
+        "email": "qooco.a@gmail.com"
+    }
+}
