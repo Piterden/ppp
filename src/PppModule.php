@@ -6,18 +6,9 @@ class PppModule extends Module
 {
 
     /**
-     * The addon icon.
+     * The addon navigation
      *
-     * @var string
+     * @var mixed
      */
-    protected $icon = '';
-
-    /**
-     * The module sections.
-     *
-     * @var array
-     */
-    protected $sections = [];
-
     protected $navigation = false;
 }

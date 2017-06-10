@@ -5,8 +5,19 @@ use Anomaly\SelectFieldType\SelectFieldType;
 
 class PostTypes
 {
-    public function handle(SelectFieldType $fieldType, TypeRepositoryInterface $typeRepository)
+    /**
+     * Handle the command
+     *
+     * @param SelectFieldType         $fieldType
+     * @param TypeRepositoryInterface $typeRepository
+     */
+    public function handle(
+        SelectFieldType $fieldType,
+        TypeRepositoryInterface $typeRepository
+    )
     {
-        $fieldType->setOptions($typeRepository->all()->pluck('name','id')->all());
+        $fieldType->setOptions(
+            $typeRepository->all()->pluck('name', 'id')->all()
+        );
     }
 }
