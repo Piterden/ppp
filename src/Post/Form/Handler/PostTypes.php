@@ -3,17 +3,20 @@
 use Anomaly\PostsModule\Type\Contract\TypeRepositoryInterface;
 use Anomaly\SelectFieldType\SelectFieldType;
 
+/**
+ * Class for get post types options.
+ */
 class PostTypes
 {
 
     /**
      * Handle the command
      *
-     * @param SelectFieldType         $field
+     * @param SelectFieldType         $fieldType
      * @param TypeRepositoryInterface $types
      */
-    public function handle(SelectFieldType $field, TypeRepositoryInterface $types)
+    public function handle(SelectFieldType $fieldType, TypeRepositoryInterface $types)
     {
-        $field->setOptions($types->all()->pluck('name', 'id')->all());
+        $fieldType->setOptions($types->all()->pluck('name', 'id')->toArray());
     }
 }

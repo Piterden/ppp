@@ -19,7 +19,7 @@ class QoocoModulePppAddPageFields extends Migration
             'namespace' => 'ppp',
             'type'      => 'anomaly.field_type.select',
             'config'    => [
-                'handler' => 'Anomaly\SelectFieldType\Handler\Layouts@handle',
+                'handler' => 'layouts',
             ],
             'en'        => [
                 'name' => 'Default Child Page Layout',
@@ -38,7 +38,7 @@ class QoocoModulePppAddPageFields extends Migration
             'type'      => 'anomaly.field_type.select',
             'config'    => [
                 'default_value' => 1,
-                'options'       => 'Qooco\PppModule\Post\Form\Handler\PostTypes@handle',
+                'handler'       => 'Qooco\PppModule\Post\Form\Handler\PostTypes@handle',
             ],
             'en'        => [
                 'name' => 'Default Child Post Type',
