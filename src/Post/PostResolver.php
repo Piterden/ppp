@@ -3,10 +3,11 @@
 /**
  * Class PostResolver
  *
- * @author        PyroCMS, Inc. <support@pyrocms.com>
- * @author        Ryan Thompson <ryan@pyrocms.com>
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Qooco <qooco.a@gmail.com>
+ * @author Denis Efremov <efremov.a.denis@gmail.com>
  *
- * @link          http://pyrocms.com/
+ * @link   http://pyrocms.com/
  */
 class PostResolver extends \Anomaly\PostsModule\Post\PostResolver
 {

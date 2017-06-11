@@ -15,6 +15,15 @@ use Anomaly\PostsModule\Post\PostRepository;
 use Anomaly\PostsModule\Post\Table\PostTableBuilder;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 
+/**
+ * Class PppModuleServiceProvider
+ *
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Qooco <qooco.a@gmail.com>
+ * @author Denis Efremov <efremov.a.denis@gmail.com>
+ *
+ * @link   http://pyrocms.com/
+ */
 class PppModuleServiceProvider extends AddonServiceProvider
 {
 

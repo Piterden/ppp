@@ -3,6 +3,15 @@
 use Anomaly\PostsModule\Post\PostCollection;
 use Anomaly\PostsModule\Post\PostModel;
 
+/**
+ * Class PageModel
+ *
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Qooco <qooco.a@gmail.com>
+ * @author Denis Efremov <efremov.a.denis@gmail.com>
+ *
+ * @link   http://pyrocms.com/
+ */
 class PageModel extends \Anomaly\PagesModule\Page\PageModel
 {
 

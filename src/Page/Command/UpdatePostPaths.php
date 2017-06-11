@@ -4,7 +4,13 @@ use Anomaly\PagesModule\Page\Contract\PageInterface;
 use Qooco\PppModule\Post\PostRepository;
 
 /**
- * Class for update post paths.
+ * Class UpdatePostPaths
+ *
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Qooco <qooco.a@gmail.com>
+ * @author Denis Efremov <efremov.a.denis@gmail.com>
+ *
+ * @link   http://pyrocms.com/
  */
 class UpdatePostPaths
 {

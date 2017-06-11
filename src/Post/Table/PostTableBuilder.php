@@ -4,6 +4,15 @@ use Qooco\PppModule\Post\Table\Command\ModifyTableColumns;
 use Qooco\PppModule\Post\Table\Command\ModifyTableFilters;
 use Qooco\PppModule\Post\Table\Command\SetTableTitle;
 
+/**
+ * Class PostTableBuilder
+ *
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Qooco <qooco.a@gmail.com>
+ * @author Denis Efremov <efremov.a.denis@gmail.com>
+ *
+ * @link   http://pyrocms.com/
+ */
 class PostTableBuilder extends \Anomaly\PostsModule\Post\Table\PostTableBuilder
 {
 

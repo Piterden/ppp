@@ -2,6 +2,15 @@
 
 use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 
+/**
+ * Class PostFormBuilder
+ *
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Qooco <qooco.a@gmail.com>
+ * @author Denis Efremov <efremov.a.denis@gmail.com>
+ *
+ * @link   http://pyrocms.com/
+ */
 class PostFormBuilder extends \Anomaly\PostsModule\Post\Form\PostFormBuilder
 {
 

@@ -2,6 +2,15 @@
 
 use Anomaly\PagesModule\Page\Form\PageEntryFormBuilder;
 
+/**
+ * Class PageEntryFormSections
+ *
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Qooco <qooco.a@gmail.com>
+ * @author Denis Efremov <efremov.a.denis@gmail.com>
+ *
+ * @link   http://pyrocms.com/
+ */
 class PageEntryFormSections extends \Anomaly\PagesModule\Page\Form\PageEntryFormSections
 {
 

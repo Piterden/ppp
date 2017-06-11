@@ -4,7 +4,13 @@ use Anomaly\PostsModule\Type\Contract\TypeRepositoryInterface;
 use Anomaly\SelectFieldType\SelectFieldType;
 
 /**
- * Class for get post types options.
+ * Class PostTypes
+ *
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Qooco <qooco.a@gmail.com>
+ * @author Denis Efremov <efremov.a.denis@gmail.com>
+ *
+ * @link   http://pyrocms.com/
  */
 class PostTypes
 {
