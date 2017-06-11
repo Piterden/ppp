@@ -39,10 +39,7 @@ class UpdatePostPaths
      */
     public function handle(PostRepository $posts)
     {
-        /* @var PostCollection $children */
-        $children = $posts->findAllByParent($this->page);
-
-        $children->each(
+        $posts->findAllByParent($this->page)->each(
             /* @var PostInterface $post */
             function ($post)
             {
