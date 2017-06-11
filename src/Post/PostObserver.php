@@ -16,21 +16,14 @@ class PostObserver extends \Anomaly\PostsModule\Post\PostObserver
     /**
      * Fired just after the entry was saved.
      *
-     * @param EntryInterface|PostInterface $entry
+     * @param EntryInterface $entry
      */
-    public function saved(EntryInterface $entry)
+    public function saving(EntryInterface $entry)
     {
-        parent::saved($entry);
+        parent::saving($entry);
 
         $entry->load('parent');
 
-        $path = $entry->parent
-        ? ($entry->parent->getPath() . '/' . $entry->slug)
-        : 'posts/' . $entry->slug;
-
-        $entry->getConnection()
-            ->table('posts_posts')
-            ->where('id', $entry->id)
-            ->update(compact('path'));
+        $entry->setPath($entry->getPath());
     }
 }
