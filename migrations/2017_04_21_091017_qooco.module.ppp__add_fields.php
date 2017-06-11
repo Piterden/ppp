@@ -14,27 +14,27 @@ class QoocoModulePppAddFields extends Migration
     {
         $stream = $this->streams()->findBySlugAndNamespace('posts', 'posts');
 
-        $parent = $this->fields()->findBySlugAndNamespace('parent','pages');
-        $path = $this->fields()->findBySlugAndNamespace('path','pages');
+        if ($field = $this->fields()->findBySlugAndNamespace('parent', 'pages'))
+        {
+            $this->assignments()->create(
+                [
+                    'field'    => $field,
+                    'stream'   => $stream,
+                    'required' => false,
+                ]
+            );
+        }
 
-        $assignments = $this->assignments();
-
-        $assignments->create(
-            [
-                'field'    => $parent,
-                'stream'   => $stream,
-                'required' => false,
-            ]
-        );
-
-        $assignments->create(
-            [
-                'field'    => $path,
-                'stream'   => $stream,
-                'required' => false,
-            ]
-        );
-
+        if ($field = $this->fields()->findBySlugAndNamespace('path', 'pages'))
+        {
+            $this->assignments()->create(
+                [
+                    'field'    => $field,
+                    'stream'   => $stream,
+                    'required' => false,
+                ]
+            );
+        }
     }
 
     /**
@@ -44,6 +44,22 @@ class QoocoModulePppAddFields extends Migration
      */
     public function down()
     {
-        //
+        $stream = $this->streams()->findBySlugAndNamespace('posts', 'posts');
+
+        if ($field = $this->fields()->findBySlugAndNamespace('parent', 'pages'))
+        {
+            if ($assignment = $this->assignments()->findByStreamAndField($stream, $field))
+            {
+                $this->assignments()->delete($assignment);
+            }
+        }
+
+        if ($field = $this->fields()->findBySlugAndNamespace('path', 'pages'))
+        {
+            if ($assignment = $this->assignments()->findByStreamAndField($stream, $field))
+            {
+                $this->assignments()->delete($assignment);
+            }
+        }
     }
 }

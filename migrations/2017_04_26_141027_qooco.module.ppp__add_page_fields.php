@@ -12,7 +12,9 @@ class QoocoModulePppAddPageFields extends Migration
      */
     public function up()
     {
-        $default_page_layout = $this->fields()->create([
+        $stream = $this->streams()->findBySlugAndNamespace('pages', 'pages');
+
+        $field = $this->fields()->create([
             'slug'      => 'default_page_layout',
             'namespace' => 'ppp',
             'type'      => 'anomaly.field_type.select',
@@ -24,30 +26,28 @@ class QoocoModulePppAddPageFields extends Migration
             ],
         ]);
 
-        $default_post_type = $this->fields()->create([
+        $this->assignments()->create([
+            'field'    => $field,
+            'stream'   => $stream,
+            'required' => false,
+        ]);
+
+        $field = $this->fields()->create([
             'slug'      => 'default_post_type',
             'namespace' => 'ppp',
             'type'      => 'anomaly.field_type.select',
             'config'    => [
                 'default_value' => 1,
-                'handler'       => 'Qooco\PppModule\Post\SelectFieldType\PostTypes@handle',
+                'options'       => 'Qooco\PppModule\Post\Form\Handler\PostTypes@handle',
             ],
             'en'        => [
                 'name' => 'Default Child Post Type',
             ],
         ]);
 
-        $pages = $this->streams()->findBySlugAndNamespace('pages', 'pages');
-
         $this->assignments()->create([
-            'field'    => $default_page_layout,
-            'stream'   => $pages,
-            'required' => false,
-        ]);
-
-        $this->assignments()->create([
-            'field'    => $default_post_type,
-            'stream'   => $pages,
+            'field'    => $field,
+            'stream'   => $stream,
             'required' => false,
         ]);
     }
@@ -59,20 +59,32 @@ class QoocoModulePppAddPageFields extends Migration
      */
     public function down()
     {
-        if ($default_page_layout = $this->fields()->findBySlugAndNamespace(
+        $stream = $this->streams()->findBySlugAndNamespace('pages', 'pages');
+
+        if ($field = $this->fields()->findBySlugAndNamespace(
             'default_page_layout',
             'ppp'
         ))
         {
-            $default_page_layout->delete();
+            if ($assignment = $this->assignments()->findByStreamAndField($stream, $field))
+            {
+                $this->assignments()->delete($assignment);
+            }
+
+            $this->fields()->delete($field);
         }
 
-        if ($default_post_type = $this->fields()->findBySlugAndNamespace(
+        if ($field = $this->fields()->findBySlugAndNamespace(
             'default_post_type',
             'ppp'
         ))
         {
-            $default_post_type->delete();
+            if ($assignment = $this->assignments()->findByStreamAndField($stream, $field))
+            {
+                $this->assignments()->delete($assignment);
+            }
+
+            $this->fields()->delete($field);
         }
     }
 }

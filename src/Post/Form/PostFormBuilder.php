@@ -6,7 +6,7 @@ class PostFormBuilder extends \Anomaly\PostsModule\Post\Form\PostFormBuilder
 {
 
     /**
-     * @param PostFormBuilder $this
+     * @param PageRepositoryInterface $this
      */
     public function onBuilt(PageRepositoryInterface $pages)
     {

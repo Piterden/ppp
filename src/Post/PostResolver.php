@@ -10,16 +10,17 @@
  */
 class PostResolver extends \Anomaly\PostsModule\Post\PostResolver
 {
+
     /**
-     * @return mixed
+     * Resolves the post
+     *
+     * @return PostInterface
      */
     public function resolve()
     {
         if ($path = $this->route->getParameter('path'))
         {
-            return $this->posts->newQuery()
-                ->where('path', '=', '/' . $path)
-                ->first();
+            return $this->posts->findByPath('/' . $path);
         }
 
         return parent::resolve();
