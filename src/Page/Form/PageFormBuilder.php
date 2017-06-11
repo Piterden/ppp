@@ -6,24 +6,27 @@ class PageFormBuilder extends \Anomaly\PagesModule\Page\Form\PageFormBuilder
 {
 
     /**
-     * { function_description }
+     * Fires when builder built
+     *
+     * @param PageRepositoryInterface $pages The pages
      */
-    public function onBuilt()
+    public function onBuilt(PageRepositoryInterface $pages)
     {
-        if ($page_id = request('parent'))
+        if ($page_id = $this->getRequestValue('parent'))
         {
-            $parent = app(PageRepositoryInterface::class)->find($page_id);
-
-            if (!$parent)
+            if (!$parent = $pages->find($page_id))
             {
                 abort(404, 'Can\'t create post for non existing page!');
             }
 
-            $form = $this->getForm();
+            $this->getFormField('theme_layout')
+                ->setValue($parent->getDefaultPageLayout());
 
-            $form->getField('theme_layout')->setValue($parent->default_page_layout);
-            $form->getField('default_page_layout')->setValue($parent->default_page_layout);
-            $form->getField('default_post_type')->setValue($parent->default_post_type);
+            $this->getFormField('default_page_layout')
+                ->setValue($parent->getDefaultPageLayout());
+
+            $this->getFormField('default_post_type')
+                ->setValue($parent->getDefaultPostType());
         }
     }
 }

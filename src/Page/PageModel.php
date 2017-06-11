@@ -42,4 +42,24 @@ class PageModel extends \Anomaly\PagesModule\Page\PageModel
 
         return $this;
     }
+
+    /**
+     * Gets the default page layout.
+     *
+     * @return string The default page layout.
+     */
+    public function getDefaultPageLayout()
+    {
+        return $this->default_page_layout;
+    }
+
+    /**
+     * Gets the default post type.
+     *
+     * @return integer The default post type.
+     */
+    public function getDefaultPostType()
+    {
+        return $this->default_post_type;
+    }
 }
