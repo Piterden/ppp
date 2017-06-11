@@ -1,6 +1,7 @@
 <?php namespace Qooco\PppModule\Page;
 
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
+use Qooco\PppModule\Page\Command\UpdatePostPaths;
 
 /**
  * Class PageObserver
@@ -22,12 +23,6 @@ class PageObserver extends \Anomaly\PagesModule\Page\PageObserver
     {
         parent::saved($entry);
 
-        $db = $entry->getConnection();
-
-        $db->table('posts_posts')
-            ->where('parent_id', '=', $entry->id)
-            ->update([
-                'path' => $db->raw('CONCAT("' . $entry->path . '/", `slug`)')
-            ]);
+        $this->dispatch(new UpdatePostPaths($entry));
     }
 }

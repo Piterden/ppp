@@ -11,8 +11,8 @@ use Anomaly\PostsModule\Post\PostBreadcrumb;
 use Anomaly\PostsModule\Post\PostModel;
 use Anomaly\PostsModule\Post\PostObserver;
 use Anomaly\PostsModule\Post\PostResolver;
+use Anomaly\PostsModule\Post\PostRepository;
 use Anomaly\PostsModule\Post\Table\PostTableBuilder;
-use Anomaly\PostsModule\Post\Table\PostTableFilters;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 
 class PppModuleServiceProvider extends AddonServiceProvider
@@ -44,8 +44,8 @@ class PppModuleServiceProvider extends AddonServiceProvider
         PostObserver::class          => \Qooco\PppModule\Post\PostObserver::class,
         PostResolver::class          => \Qooco\PppModule\Post\PostResolver::class,
         PostBreadcrumb::class        => \Qooco\PppModule\Post\PostBreadcrumb::class,
+        PostRepository::class        => \Qooco\PppModule\Post\PostRepository::class,
         PostTableBuilder::class      => \Qooco\PppModule\Post\Table\PostTableBuilder::class,
-        PostTableFilters::class      => \Qooco\PppModule\Post\Table\PostTableFilters::class,
         PostFormBuilder::class       => \Qooco\PppModule\Post\Form\PostFormBuilder::class,
         PostEntryFormSections::class => \Qooco\PppModule\Post\Form\PostEntryFormSections::class,
         PageModel::class             => \Qooco\PppModule\Page\PageModel::class,

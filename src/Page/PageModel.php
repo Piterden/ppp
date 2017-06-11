@@ -1,5 +1,6 @@
 <?php namespace Qooco\PppModule\Page;
 
+use Anomaly\PostsModule\Post\PostCollection;
 use Anomaly\PostsModule\Post\PostModel;
 
 class PageModel extends \Anomaly\PagesModule\Page\PageModel
@@ -27,5 +28,18 @@ class PageModel extends \Anomaly\PagesModule\Page\PageModel
     public function getPosts()
     {
         return $this->posts()->get();
+    }
+
+    /**
+     * Sets the posts.
+     *
+     * @param  PostCollection $posts The posts
+     * @return $this
+     */
+    public function setPosts(PostCollection $posts)
+    {
+        $this->posts = $posts;
+
+        return $this;
     }
 }
