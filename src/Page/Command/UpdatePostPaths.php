@@ -43,8 +43,6 @@ class UpdatePostPaths
             /* @var PostInterface $post */
             function ($post)
             {
-                $post->setPath($post->getPath());
-
                 $post->save();
             }
         );
